@@ -6,8 +6,8 @@
 ## About Project
 PhoneBook is the 5th assignment about an Android Application for CN333 Mobile Application Developments.
 
-<!-- ### Preview
-* [![Youtube][youtube.com]][youtube-url] -->
+### Preview
+* [![Youtube][youtube.com]][youtube-url]
 
 ### Built With
 
@@ -48,7 +48,7 @@ or
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [youtube.com]: https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white
-[youtube-url]: https://www.youtube.com
+[youtube-url]: https://youtu.be/9leoxHZPHy8
 [developer.android.com]: https://img.shields.io/badge/Android%20Studio-3DDC84?style=for-the-badge&logo=android-studio&logoColor=white
 [developer.android.com-url]: https://developer.android.com/studio
 [jetpact-compose.com]: https://img.shields.io/badge/Jetpack%20Compose-0095D5?style=for-the-badge&logo=android&logoColor=white
