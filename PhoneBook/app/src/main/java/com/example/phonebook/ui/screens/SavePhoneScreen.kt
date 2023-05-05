@@ -37,7 +37,6 @@ import com.example.phonebook.ui.routing.Screen
 import com.example.phonebook.viewmodel.MainViewModel
 import kotlinx.coroutines.launch
 
-@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @ExperimentalMaterialApi
 @Composable
 fun SavePhoneScreen(viewModel: MainViewModel) {

@@ -73,26 +73,13 @@ fun PhoneProfile(
     size: Dp,
     border: Dp
 ) {
-    Box(
-        modifier = modifier
-            .size(size)
-            .clip(CircleShape)
-            .background(color)
-            .border(
-                BorderStroke(
-                    border,
-                    SolidColor(Color.Black)
-                ),
-                CircleShape
-            )
-    )
-//    IconButton(onClick = {}) {
-//        Icon(
-//            imageVector = Icons.Default.Person,
-//            contentDescription = "Save Phone Button",
-//            tint = MaterialTheme.colors.onPrimary
-//        )
-//    }
+    IconButton(onClick = {}) {
+        Icon(
+            imageVector = Icons.Default.Person,
+            contentDescription = "Save Phone Button",
+            tint = MaterialTheme.colors.primaryVariant
+        )
+    }
 }
 
 @Preview
