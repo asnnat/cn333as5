@@ -21,6 +21,7 @@ private const val NO_DIALOG = 1
 private const val RESTORE_NOTES_DIALOG = 2
 private const val PERMANENTLY_DELETE_DIALOG = 3
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 @ExperimentalMaterialApi
 fun TrashScreen(viewModel: MainViewModel) {

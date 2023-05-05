@@ -1,6 +1,9 @@
 package com.example.phonebook.ui.screens
 
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.net.Uri
+import android.widget.Toast
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -22,6 +25,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
@@ -37,6 +41,7 @@ import com.example.phonebook.ui.routing.Screen
 import com.example.phonebook.viewmodel.MainViewModel
 import kotlinx.coroutines.launch
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @ExperimentalMaterialApi
 @Composable
 fun SavePhoneScreen(viewModel: MainViewModel) {
@@ -220,7 +225,8 @@ fun TagItem(
             modifier = Modifier.padding(10.dp),
             color = Color.White,
             size = 80.dp,
-            border = 2.dp
+            border = 2.dp,
+            tag = tag
         )
         Text(
             text = tag.name,
@@ -259,7 +265,7 @@ private fun SavePhoneContent(
             imeAction = ImeAction.Done
         )
 
-        PickedTag(tag = phone.tag)
+        PickedTag(phone = phone)
     }
 }
 
@@ -321,14 +327,19 @@ fun ContentNumberField(
 }
 
 @Composable
-private fun PickedTag(tag: TagModel) {
+private fun PickedTag(phone: PhoneModel) {
     Row(
         Modifier
             .padding(8.dp)
             .padding(top = 16.dp)
     ) {
+        val ctx = LocalContext.current
+
+        val name = phone.tag.name
+        val tag = phone.tag
+
         Text(
-            text = "Picked tag",
+            text = "Picked tag: $name",
             modifier = Modifier
                 .weight(1f)
                 .align(Alignment.CenterVertically)
@@ -337,7 +348,17 @@ private fun PickedTag(tag: TagModel) {
             color = Color.White,
             size = 40.dp,
             border = 1.dp,
-            modifier = Modifier.padding(4.dp)
+            modifier = Modifier.padding(4.dp),
+            tag = tag,
+            onclick = {
+                val u = Uri.parse("tel:" + phone.phone_number)
+                val i = Intent(Intent.ACTION_DIAL, u)
+                try {
+                    ctx.startActivity(i)
+                } catch (s: SecurityException) {
+                    Toast.makeText(ctx, "An error occurred", Toast.LENGTH_LONG).show()
+                }
+            }
         )
     }
 }
