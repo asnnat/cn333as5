@@ -1,9 +1,11 @@
 package com.example.phonebook.database
 
 import androidx.lifecycle.LiveData
+import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 
+@Dao
 interface TagDao {
     // get all tag
     @Query("SELECT * FROM TagDbModel")

@@ -5,17 +5,32 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.graphics.Color
 
 private val DarkColorPalette = darkColors(
-    primary = Purple200,
-    primaryVariant = Purple700,
-    secondary = Teal200
+    primary = Color(0xFF00A055),
+    primaryVariant = Color(0xFF00F884),
+    secondary = Color(0xFFC75F00),
+    onPrimary = Color.White
+
+//    primary = Purple200,
+//    primaryVariant = Purple700,
+//    secondary = Teal200,
+//    onPrimary = Color.White
 )
 
 private val LightColorPalette = lightColors(
-    primary = Purple500,
-    primaryVariant = Purple700,
-    secondary = Teal200
+    primary = Color(0xFF006837),
+    primaryVariant = Color(0xFF004012),
+    secondary = Color(0xFF006837)
+
+//    primary = Purple500,
+//    primaryVariant = Purple700,
+//    secondary = Teal200,
+//    onPrimary = Color.White
 
     /* Other default colors to override
     background = Color.White,
@@ -41,4 +56,8 @@ fun PhoneBookTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composa
         shapes = Shapes,
         content = content
     )
+}
+
+object PhonesThemeSettings {
+    var isDarkThemeEnabled by mutableStateOf(false)
 }

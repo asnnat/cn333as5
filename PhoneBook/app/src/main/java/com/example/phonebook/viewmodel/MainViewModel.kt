@@ -1,7 +1,6 @@
 package com.example.phonebook.viewmodel
 
 import android.app.Application
-import androidx.compose.ui.graphics.BlendMode.Companion.Screen
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,6 +10,8 @@ import com.example.phonebook.database.DbMapper
 import com.example.phonebook.database.Repository
 import com.example.phonebook.domain.model.PhoneModel
 import com.example.phonebook.domain.model.TagModel
+import com.example.phonebook.ui.routing.PhonesRouter
+import com.example.phonebook.ui.routing.Screen
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -39,14 +40,14 @@ class MainViewModel(application: Application) : ViewModel() {
         repository = Repository(db.phoneDao(), db.colorDao(), DbMapper())
     }
 
-    fun onCreateNewNoteClick() {
+    fun onCreateNewPhoneClick() {
         _phoneEntry.value = PhoneModel()
-//        MyPhonesRouter.navigateTo(Screen.SavePhone)
+        PhonesRouter.navigateTo(Screen.SavePhone)
     }
 
     fun onPhoneClick(phone: PhoneModel) {
         _phoneEntry.value = phone
-//        MyPhonesRouter.navigateTo(Screen.SavePhone)
+        PhonesRouter.navigateTo(Screen.SavePhone)
     }
 
     fun onPhoneEntryChange(phone: PhoneModel) {
@@ -58,7 +59,7 @@ class MainViewModel(application: Application) : ViewModel() {
             repository.insertPhone(phone)
 
             withContext(Dispatchers.Main) {
-//                MyPhonesRouter.navigateTo(Screen.Phones)
+                PhonesRouter.navigateTo(Screen.Phones)
 
                 _phoneEntry.value = PhoneModel()
             }
@@ -80,7 +81,7 @@ class MainViewModel(application: Application) : ViewModel() {
             repository.movePhoneToTrash(phone.id)
 
             withContext(Dispatchers.Main) {
-//                MyPhonesRouter.navigateTo(Screen.Phones)
+                PhonesRouter.navigateTo(Screen.Phones)
             }
         }
     }
